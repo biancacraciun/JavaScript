@@ -45,7 +45,7 @@ function isUpperCase(value, position) {
 console.log(isUpperCase('Js STRING EXERCISES', 0));
 
 // Scrieti o functie care insereaza un string la o anumita pozitie intr-un alt string:
-function insert(firstString, secondString = '', pos = 0) {
+function insert(firstString, secondString, pos) {
   var a = firstString.slice(0, pos);
   var c = firstString.slice(pos);
   return a + secondString + c; 
