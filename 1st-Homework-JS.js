@@ -62,7 +62,7 @@ console.log(remove_first_occurence("The quick brown fox jumps over the lazy dog"
 
 // Scrieti o functie care compara doua string-uri case-insensitive:
 function compare_strings(string_A, string_B) {
-  return string_A.toLowerCase() === string_B.toLowerCase();
+  return string_A.toUpperCase() === string_B.toUpperCase();
 }
 console.log(compare_strings('abcd', 'AbcD'));
 
