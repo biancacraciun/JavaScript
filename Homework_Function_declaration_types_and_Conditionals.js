@@ -2,6 +2,8 @@
 // 2. valoarea numerica a parametrului SSN se transforma in string (SSN_string);
 // Incercasem fara sa transform in string, dar cum charAt() e specific string-urilor,
 // am transformat.
+// // // Introducerea validarii pentru 13 cifre: Daca lungimea string-ului nu este de 13 cifre,
+// // // functia va returna 'Incorrect SSN!';
 // 3. daca prima cifra din sirul de numere (SSN_string) este 1,
 // atunci functia va returna gender M;
 // 4. altfel daca prima cifra din sirul de numere (SSN_string) este 2, 
@@ -21,6 +23,14 @@
 
 function validate_Gender (SSN) {
   var SSN_string = SSN.toString();
+  // if (SSN_string.length !== 13) {
+  //   return 'Incorrect SSN!'; 
+  // }
+  var regexp = /^[1-9]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(0[1-9]|[1-4]\d|5[0-2]|99)(00[1-9]|0[1-9]\d|[1-9]\d\d)\d$/;
+  if (!regexp.test(SSN)) {
+    return 'Incorrect SSN!';
+  } 
+
   if (SSN_string.charAt(0) === 1) {
     return 'Persoana verificata este de sexul M';
   } else if (SSN_string.charAt(0) === '2') {
@@ -38,7 +48,46 @@ function validate_Gender (SSN) {
   }
 };
   
-console.log(validate_Gender('2970220225894'));
+console.log(validate_Gender('2970220225899'));
+
+function validate_Gender (SSN) {
+  var gender;
+  var SSN_string = SSN.toString();
+  var regexp = /^[1-9]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(0[1-9]|[1-4]\d|5[0-2]|99)(00[1-9]|0[1-9]\d|[1-9]\d\d)\d$/;
+  if (!regexp.test(SSN)) {
+    return 'Incorrect SSN!';
+  } 
+  // if (SSN_string.length !== 13) {
+  //   return 'Incorrect SSN!'; 
+  // }
+  switch (true) {
+    case SSN_string.charAt(0) === '1':
+      gender = 'M';
+      break;
+    case SSN_string.charAt(0) === '2':
+      gender = 'F';
+      break;
+    case SSN_string.charAt(0) === '3':
+      gender = 'M';
+      break;
+    case SSN_string.charAt(0) === '4':
+      gender = 'F';
+      break;
+    case SSN_string.charAt(0) === '5':
+      gender = 'M';
+      break;
+    case SSN_string.charAt(0) === '6':
+      gender = 'F';
+      break;
+    case SSN_string.charAt(0) === '7' && SSN_string.charAt(0) === '8':
+      return 'Persoana este rezidenta straina!'
+      break;
+  }
+  return 'Persoana verificata este de sexul ' + gender;
+};
+
+console.log(validate_Gender(2970220225899));
+ 
 
 // 1. se declara functia cu parametrul nr;
 // 2. se declara o variabila care stocheaza calificativele corespunzatoare punctajelor;
@@ -53,6 +102,7 @@ console.log(validate_Gender('2970220225894'));
 // + ' este ' + var qualif;
 
 // EX. 2
+// I.
 
 var note = function (nr) {
   var qualif; 
@@ -74,11 +124,11 @@ var note = function (nr) {
 
 console.log(note(5))
 
-// initial am incercat si cu switch, dar nu mi-a iesit
+// II.
 
 var note = function(nr) {
   var qualif;
-  switch(nr) {
+  switch(true) {
     case nr >= 1 && nr < 3:
       qualif = 'E';
       break;
@@ -153,11 +203,15 @@ console.log(car_product('Mazda'));
 
 var car = function (car_name) {
   var country_name;
-  var unknown = 'Marca nu exista!';
+  var unknown = 'Marca este necunoscuta!';
 
   switch(car_name) {
     case 'Mazda':
+      country_name = 'Japonia';
+      break;
     case 'Nissan':
+      country_name = 'Japonia';
+      break;
     case 'Mitsubishi':
       country_name = 'Japonia';
       break;
@@ -165,17 +219,20 @@ var car = function (car_name) {
       country_name = 'Coreea de Sud';
       break;
     case 'Bentley':
+      country_name = 'Regatul Unit';
+      break;
     case 'Rolls-Royce':
       country_name = 'Regatul Unit';
       break; 
     case 'Alfa-Romeo':
+      country_name = 'Italia';
+      break;
     case 'Pagani':
       country_name = 'Italia';
       break;
     default:
       return unknown;
   } 
-
   return 'Marca ' + car_name + ' este fabricata in ' + country_name; 
 };
   
