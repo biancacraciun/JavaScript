@@ -1,5 +1,7 @@
 // 1. se declara functia validate_Gender cu parametrul SSN;
-// 2. valoarea numerica a parametrului SSN se transforma in string (SSN_string)
+// 2. valoarea numerica a parametrului SSN se transforma in string (SSN_string);
+// Incercasem fara sa transform in string, dar cum charAt() e specific string-urilor,
+// am transformat.
 // 3. daca prima cifra din sirul de numere (SSN_string) este 1,
 // atunci functia va returna gender M;
 // 4. altfel daca prima cifra din sirul de numere (SSN_string) este 2, 
@@ -39,95 +41,112 @@ function validate_Gender (SSN) {
 console.log(validate_Gender('2970220225894'));
 
 // 1. se declara functia cu parametrul nr;
-// 2. fiecare calificativ este reprezentat de o variabila;
-// 3. fiecarui interval numeric i se va atruibui o variabila anterior declarata;
-// 4. daca parametrul nr face parte din intervalul [1, 3), functia va returna
-// calificativul asociat variabilei insufficient;
-// 5. altfel daca parametrul nr face parte din intervalul [3,6], functia va returna
-// calificativul D;
-// 6. altfel daca parametrul nr face parte din intervalul [7,8], functia va returna
-// calificativul B;
-// 7. altfel daca parametrul nr este egal cu 9, functia va returna calificativul A;
-// 8. altfel daca parametrul nr este egal cu 10, functia la returna calificativul A+;
+// 2. se declara o variabila care stocheaza calificativele corespunzatoare punctajelor;
+// 3. pentru fiecare interval numeric, variabila corespunzatoare calificativul ia o alta valoare;
+// 4. daca parametrul nr face parte din intervalul [1, 3), variabila qualif va lua valoarea 'E';
+// 5. altfel daca parametrul nr face parte din intervalul [3,6], variabila qualif va lua valoarea 'D';
+// 6. altfel daca parametrul nr face parte din intervalul [7,8], variabila qualif va lua valoare 'B';
+// 7. altfel daca parametrul nr este egal cu 9, variabila qualif va lua valoarea A;
+// 8. altfel daca parametrul nr este egal cu 10, variabila qualif va lua A+;
 // 9. in alte conditii, functia va returna undefined.
+// 10. functia pincipala returneaza 'Calificativul corespunzator punctajului ' + parametrul nr + 
+// + ' este ' + var qualif;
 
 // EX. 2
 
 var note = function (nr) {
-  var insufficient = 'E';
-  var sufficient = 'D';
-  var good = 'B';
-  var quiteGood = 'A';
-  var veryGood = 'A+';
-    
+  var qualif; 
   if (nr >= 1 && nr < 3) {
-    return 'Calificativul corespunzator punctajului ' + nr + ' este ' + insufficient + '.';
+    qualif = 'E';
   } else if (nr >= 3 && nr <= 6) {
-    return 'Calificativul corespunzator punctajului ' + nr + ' este ' + sufficient + '.';
+    qualif = 'D';
   } else if (nr >= 7 && nr <= 8) {
-    return 'Calificativul corespunzator punctajului ' + nr + ' este ' + good + '.';
+    qualif = 'B';
   } else if (nr === 9) {
-    return 'Calificativul corespunzator punctajului ' + nr + ' este ' + quiteGood + '.';
+    qualif = 'A';
   } else if (nr === 10) {
-    return 'Calificativul corespunzator punctajului ' + nr + ' este ' + veryGood + '.';
+    qualif = 'A+';
   } else {
-    return 'undefined';
+    return 'Nu exista calificativ!';
   }
+  return 'Calificativul corespunzator punctajului ' + nr + ' este ' + qualif + '.'
 };
-   
-console.log(note(10));
 
+console.log(note(5))
+
+// initial am incercat si cu switch, dar nu mi-a iesit
+
+var note = function(nr) {
+  var qualif;
+  switch(nr) {
+    case nr >= 1 && nr < 3:
+      qualif = 'E';
+      break;
+    case nr >= 3 && nr <= 6:
+      qualif = 'D';
+      break;
+    case nr >= 7 && nr <= 8:
+      qualif = 'B';
+      break;
+    case nr === 9:
+      qualif = 'A';
+      break;
+    case nr === 10:
+      qualif = 'A+';
+      break;
+    default: 'undefined';
+      break;
+  }
+  return 'Calificativul corespunzator punctajului ' + nr + ' este ' + qualif + '.'
+};
+
+console.log(note(5))
 
 // 1. se declara functia cu parametrul car_name;
-// 2. se declara o variabila care reprezinta un array cu numele oraselor;
-// 3. pentru fiecare brand auto se va asocia o tara;
-// 4. daca brandul masinii este Mazda, tara va fi Japonia;
-// 5. elementele din array vor fi selectate cu index number;
-// 6. daca brandul masinii este Hyundai, functia va returna "Marca Hyundai
-// se produce in Coreea de Sud": "Marca " + car_name + " se produce in " +
-// numarul elementului din array corespunzator tarii producatoare;
-// 7. in cazul in care brandul introdus nu face parte dintre cele precizare in
+// 2. se declara o variabila care va stoca numele tarilor de fabricatie;
+// 3. pentru fiecare brand auto variabila country_name va prelua o valoare;
+// 4. daca marca masinii este Mazda, var country_name va avea valoarea 'Japonia';
+// 5. daca marca masinii este Hyundai, var country_name va avea valoarea 'Coreea de Sud'; 
+// 7. in cazul in care marca introdusa nu face parte dintre cele precizate in
 // functie, aceasta va returna "Marca este necunoscuta!";
 
 // EX. 3
 
-var anonymous = function (car_name) {
-    var country_name = ['Japonia', 'Coreea de Sud', 'Regatul Unit', 'Italia'];
-      
-    if (car_name === 'Mazda') {
-        return 'Marca ' + car_name + ' se produce in ' + country_name[0];
-    } else if (car_name === 'Hyundai') {
-        return 'Marca ' + car_name + ' se produce in ' + country_name[1];
-    } else if (car_name === 'Bentley') {
-        return 'Marca ' + car_name + ' se produce in ' + country_name[2];
-    } else if (car_name === 'Rolls-Royce') {
-        return 'Marca ' + car_name + ' se produce in ' + country_name[2];
-    } else if (car_name === 'Alfa-Romeo') {
-        return 'Marca ' + car_name + ' se produce in ' + country_name[3];
-    } else if (car_name === 'Pagani') {
-        return 'Marca ' + car_name + ' se produce in ' + country_name[3];
-    } else if (car_name === 'Mitsubishi') {
-        return 'Marca ' + car_name + ' se produce in ' + country_name[0];
-    } else if (car_name === 'Nissan') {
-        return 'Marca ' + car_name + ' se produce in ' + country_name[0];
-    } else {
-        return 'Marca este necunoscuta.';
-    }
+var car_product = function (car_name) {
+  var country_name;
+
+  if (car_name === 'Mazda') {
+      country_name = 'Japonia';
+  } else if (car_name === 'Hyundai') {
+      country_name = 'Coreea de Sud';
+  } else if (car_name === 'Bentley') {
+      country_name = 'Regatul Unit';
+  } else if (car_name === 'Rolls-Royce') {
+      country_name = 'Regatul Unit';
+  } else if (car_name === 'Alfa-Romeo') {
+      country_name = 'Italia';
+  } else if (car_name === 'Pagani') {
+      country_name = 'Italia';
+  } else if (car_name === 'Mitsubishi') {
+      country_name = 'Japonia';
+  } else if (car_name === 'Nissan') {
+      country_name = 'Japonia';
+  } else {
+      return 'Marca este necunoscuta.';
+  }
+  return 'Marca ' + car_name +  ' este fabricata in ' + country_name + '.'
 };
 
-console.log(anonymous('Mazda'));
+console.log(car_product('Mazda'));
 
 
 // 1. se declara functia cu parametrul car_name;
-// Initial am incercat sa atribui tarile fara sa folosesc o variabila, 
-// insa a observat in enunt ca trebuie generata si valoarea corespunzatoare tarii;
-// 2. se declara variabila country_name;
+// 2. se declara o variabila (country_name) care va stoca numele tarilor;
 // 3. folosesc switch(car_name);
-// 4. pentru fiecare situatie, functia va returna tara de fabricatie;
+// 4. pentru fiecare case, variabila country_name va lua o valoare;
 // 5. cazul 'Hyundai' va fi asociat cu variabila country_name (Coreea de Sud);
-// 6. dupa switch, functia va returna "Marca " + car_name (brandul masinii introdus 
-// in console.log() + " este  fabricata in " + country_name (numele tarii asociat fiecarui
-// caz din switch);
+// 6. dupa switch, functia va returna "Marca " + car_name (parametrul functiei) + " este  fabricata in " 
+// + country_name (numele tarii asociat fiecarui caz din switch);
 // Pentru valoare default am pus initial "Marca nu exista", insa cand am dat console.log()
 // pentru a verifica, functia imi returna "Marca Opel este fabricata in 'Marca nu exista!'",
 // asa ca am declarat o variabila unknown careia i-am atribuit valoarea "Marca nu exista!";
