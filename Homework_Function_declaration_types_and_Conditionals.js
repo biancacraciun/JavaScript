@@ -48,7 +48,7 @@ function validate_Gender (SSN) {
   }
 };
   
-console.log(validate_Gender('2970220225899'));
+console.log(validate_Gender(2970220225899));
 
 function validate_Gender (SSN) {
   var gender;
@@ -57,9 +57,7 @@ function validate_Gender (SSN) {
   if (!regexp.test(SSN)) {
     return 'Incorrect SSN!';
   } 
-  // if (SSN_string.length !== 13) {
-  //   return 'Incorrect SSN!'; 
-  // }
+  
   switch (true) {
     case SSN_string.charAt(0) === '1':
       gender = 'M';

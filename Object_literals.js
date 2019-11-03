@@ -10,29 +10,31 @@ var car = function(cars) {
     var car_name = {
       'Mazda': function() {
         country_name = 'Japonia';
-        },
+      },
       'Nissan': function() {
         country_name = 'Japonia';
-        },
+      },
       'Mitsubishi': function() {
         country_name = 'Japonia';
-        },
+      },
       'Hyundai': function() {
         country_name = 'Coreea de Sud';
-        },
+      },
       'Bentley': function() {
         country_name = 'Regatul Unit';
-        }, 
+      }, 
       'Rolls-Royce': function() {
         country_name = 'Regatul Unit';
-        },
+      },
       'Alfa-Romeo': function() {
         country_name = 'Italia';
-        },
-       'Pagani': function() {
+      },
+      'Pagani': function() {
         country_name = 'Italia';
-        },
-        'default': 'Marca nu exista.'
+      }
+    }
+    if (!car_name[cars]) {
+      return 'Marca nu exista!'
     }
     car_name[cars] || car_name['default']() 
     return 'Marca ' + cars + ' este fabricata in ' + country_name + '.'
