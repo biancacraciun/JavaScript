@@ -332,50 +332,32 @@ accept_strings('home', 'me') // 5.
 // 10. Implementati o functie care accepta doua argumente: un array si o functie de adevar. 
 // Functia returneaza primul element din array care trece testul specificat
 
-// Am incercat sa fac ceva aici, dar nu mi-a iesit 
+// Am incercat sa fac ceva aici, dar nu mi-a iesit. Imi returneaza doar daca numarul e primul in array
 
-function test(number) {
-  if (Math.sqrt(number) % 1 === 0) {
-    return "Numarul " + number + " este patrat perfect!";
+function test (number) {
+  if (number <= 0) {
+    return false;
+  } else if (Math.sqrt(number) % 1 !== 0) {
+    return false;
   } else {
-    return "Numarul " + number + " nu este patrat perfect!";
+    return number;
   };
 };
 
-function truth_function(arr, arr_sort) {
-  var sort = arr.sort(function (a, b) {
-    return a - b;
-  });
-  var largest_nr = sort.reverse();
-
-  for (i = 0; i <= arr.lenght; i++) {
-    if (test(largest_nr[0]) === 0) {
-      return "Numarul " + arr[i] + " este patrat perfect.";
+function truth_function (arr, fn) {
+  
+  for (i = 0; i <= arr.length; i++) {
+    if (test(arr[i])) {
+      return(arr[i]);
     } else {
-      return "Numarul " + arr[i] + " nu este patrat perfect.";
+      return "Nu exista nici un numar patrat perfect!"
     };
   };
 };
 
-test([7, 2, 5, 15], test())
-
-var values = [];
-function accept_function (arr, fn)
-
-  function arr_function (arr) {
-    for (var i = 0; i <= arr.length; i++) {
-      if (Math.sqrt(arr[i]) % 1 === 0) {
-        return values.push(i);
-      };
-    };
-  };
-
-  function truth_function () {
-    return "Numarul " + arr[i] + " este patrat perfect!";
-  };
-};
-
-accept_function ([7, 2, 5, 15], truth_function())
+truth_function([7, 2, 5, 15], test()) // "Nu exista nici un numar patrat perfect!"
+truth_function([25, 10], test()) // 25
+truth_function([7, 25, 100, 5], test()) // "Nu exista nici un numar patrat perfect!"
 
 // 11. Implementati o functie care accepta ca argumente doua string-uri si verifica daca primul string
 //  contine toate literele celui de-al doilea string
