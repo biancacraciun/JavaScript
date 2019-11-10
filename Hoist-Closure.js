@@ -14,7 +14,7 @@ function operation(nr1, nr2) {
 operation(7, 2);
 
 // ES6 
-const operation = (nr1, nr2 = "number") => (nr1 !== nr2) ? nr1 + nr2 : (nr1 === nr2) ? (nr1 + nr2) * 5 : false;
+const operation = (nr1, nr2) => (nr1 === nr2) ? (nr1 + nr2) * 5 : nr1 + nr2;
 operation(7, 2);
 
 // 2. Vreau sa am o functie care sa returneze true daca ambele numere sunt egale
@@ -25,17 +25,13 @@ operation(7, 2);
 
 // ES5
 function sum(nr1, nr2) {
-    if (nr1 && nr2 === 30 || nr1 + nr2 === 30) {
-        return true;
-    } else {
-        return false;
-    };
+    return (nr1 && nr2 === 30 || nr1 + nr2 === 30)
 };
 
 sum(12, 15);
 
 // ES6
-const sum = (nr1, nr2 = "number") => (nr1 && nr2 === 30 || nr1 + nr2 === 30) ? true : false;
+const sum = (nr1, nr2) => nr1 && nr2 === 30 || nr1 + nr2 === 30
 sum(12, 15);
 
 // 3. Vreau sa am o functie care sa verifice un string si daca stringul incepe cu 'JS'
@@ -44,25 +40,6 @@ sum(12, 15);
 //checkString('isEasy') - JSisEasy
 //checkString(null) - JS
 
-// ES5
-function checkString(str) { // valoarea null 
-    if (typeof str !== "string") {
-        return "Introduceti o valoare de tip string!"
-    };
-
-    let upperCase = str.toUpperCase();
-    let JS = 'JS';
-    if (upperCase.startsWith(JS)) {
-        return str;
-    } else if (!upperCase.startsWith(JS)) {
-        return JS.concat(str);
-    } else if (str === null) {
-        return JS;
-    };
-};
-
-checkString('JSisAwesome');
-
 // ES6
 const checkString = (str = "string") => (str === null ? 'JS' : str.toUpperCase().startsWith('JS') ? str : 'JS'.concat(str));
 checkString("awesome");
@@ -70,7 +47,7 @@ checkString("awesome");
 // ES5
 function checkString(str) {
 
-    let JS = 'JS';
+    const JS = 'JS';
     if (str === null) {
         return JS;
     } else if (str.toUpperCase().startsWith(JS)) {
@@ -128,12 +105,11 @@ findLongestString("Wantsome is Awesomeeee today");
 // * * * *  
 // * * * * * 
 
-// Nu mi-a iesit
 function pyramid(nr) {
 
     let symbol = "*";
     for (i = 0; i <= nr; i++) {
-        let repeat = symbol.repeat(i * 1 - 1);
+        let repeat = symbol.repeat(i);
         console.log(repeat)
     };
 };
@@ -150,7 +126,7 @@ function extractNegativeNumbers(numbers) {
         return "Functia accepta doar valori de tip array!";
     };
 
-    for (i = 0; i <= numbers.length; i++) {
+    for (i = 0; i < numbers.length; i++) {
         if (numbers[i] < 0) {
             negativeNumbers.push(numbers[i]);
         };
@@ -163,9 +139,11 @@ extractNegativeNumbers([1, 2, -5, 4, -6]);
 // ES6
 const negativeNumbers = [];
 
-const extractNegativeNumbers = (numbers = Array.isArray(numbers)) => {
+const extractNegativeNumbers = (numbers = []) => {
     for (let i = 0; i <= numbers.length; i++) {
-        numbers[i] < 0 ? negativeNumbers.push(numbers[i]) : false;
+        if (numbers[i] < 0) {
+            negativeNumbers.push(numbers[i])
+        };
     };
     return negativeNumbers;
 };
@@ -209,16 +187,6 @@ function operators(nr1, nr2, operator) {
 
 operators(7, 5, "add");
 
-// ES6
-const operators = (nr1, nr2 = "number", operator = "string") => {
-    let calculation;
-    operator === "add" ? calculation = nr1 + nr2 : operator === "substract" ? calculation = nr1 - nr2
-        : operator === "multiply" ? calculation = nr1 * nr2 : operator === "divide" ? calculation = nr1 / nr2 : "try again";
-    return calculation;
-};
-
-operators(7, 5, "add");
-
 //9. Vreau sa am o functie care sa verifice daca numarul dat este divizibl cu 3, 5
 //  au ambele si sa printeze "THREE", "FIVE", "BOTH" iar daca nu este cu niciunul sa returneze numarul
 // isDiv(15) => "BOTH"
@@ -255,8 +223,6 @@ isDiv(15);
 // Ora este : 20 PM : 30 : 38
 
 // ES5 
-// Nu mi-a iesit cum trebuie
-
 function dayAndHour() {
 
     let days = ['Duminica', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri', 'Sambata'];
