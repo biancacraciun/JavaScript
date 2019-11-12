@@ -170,18 +170,27 @@ palindrome('eye');
 // 6. functia returneaza un nou array care contine primele numere (cele mai mari) din fiecare array;
 // 7. apelarea functiei;
 
-// Nu mi-a iesit
+// Nu mi-a iesit!!
 
 var final_array = [];
 function array_largest_numbers(arrs) {
   for (var i = 0; i <= arrs.length; i++) {
     for (var j = 0; j < arrs[i].length; j++) {
-      arrs[i][j].sort(function (a, b) {return a - b}).return();
+      arrs[i][j].sort(function (a, b) {return a - b}).reverse();
     };
   };
   return final_array.push(arrs[i][j][0]);
 };
 array_largest_numbers([[1, 2], [5, 7, 9], [18, 20, 3]])
+
+let largest_nr_arr = [];
+const array_largest_nrs = arrs => {
+  for (let i = 0; i <= arrs.length; i++) {
+    let result = arrs[i].sort((a, b) => a-b).reverse();
+    // console.log(result)
+  };
+  return largest_nr_arr.push(result[0])
+};
 
 // 7. Implementati o functie care face reverse la un string
 
@@ -334,30 +343,47 @@ accept_strings('home', 'me') // 5.
 
 // Am incercat sa fac ceva aici, dar nu mi-a iesit. Imi returneaza doar daca numarul e primul in array
 
-function test (number) {
-  if (number <= 0) {
-    return false;
-  } else if (Math.sqrt(number) % 1 !== 0) {
-    return false;
-  } else {
-    return number;
-  };
+// function test(number) {
+//   if (number <= 0) {
+//     return false;
+//   } else if (Math.sqrt(number) % 1 !== 0) {
+//     return false;
+//   } else {
+//     return number;
+//   };
+// };
+
+// function truth_function (arr, fn) {
+  
+//   for (i = 0; i <= arr.length; i++) {
+//     if (test(arr[i])) {
+//       return(arr[i]);
+//     } else {
+//       return "Nu exista nici un numar patrat perfect!"
+//     };
+//   };
+// };
+
+// truth_function([7, 2, 5, 15], test) // "Nu exista nici un numar patrat perfect!"
+// truth_function([25, 10], test) // 25
+// truth_function([7, 25, 100, 5], test) // "Nu exista nici un numar patrat perfect!"
+
+function test(n) {
+  return Math.sqrt(n) % 1 === 0;
 };
 
-function truth_function (arr, fn) {
-  
-  for (i = 0; i <= arr.length; i++) {
-    if (test(arr[i])) {
-      return(arr[i]);
+function select_nr (arr, fn) {
+  for (var i = 0; i <= arr.length; ) {
+    if (fn(arr[i])) {
+      return arr[i];
     } else {
-      return "Nu exista nici un numar patrat perfect!"
+      return "Try again!";
     };
   };
 };
 
-truth_function([7, 2, 5, 15], test()) // "Nu exista nici un numar patrat perfect!"
-truth_function([25, 10], test()) // 25
-truth_function([7, 25, 100, 5], test()) // "Nu exista nici un numar patrat perfect!"
+select_nr([25, 10], test)
+select_nr([7, 25, 100, 5], test)
 
 // 11. Implementati o functie care accepta ca argumente doua string-uri si verifica daca primul string
 //  contine toate literele celui de-al doilea string
@@ -412,6 +438,8 @@ function return_value(array, val) { // 1.
 };
 
 return_value([1, 8, 9, 15, 49, 81], 15) // 4.
+
+
 
 // 13. Scrieti o functie care elimina toate valorile false dintr-un array: false, null, 0, "", undefined, NaN
 
