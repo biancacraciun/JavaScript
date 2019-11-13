@@ -183,10 +183,20 @@ rep (4) // 0 1 2 3 40 1 2 3 40 1 2 3 4
 // ● apeleaza actionFn pana cand conditionalFn returneaza fals 
 // ● nu returneaza nimic
 
-function stream (conditional, action) {
-    
-}
+function conditionalFn () {
+    return false;
+};
 
+function actionFn () {
+    for (i = 0; i <= 10; i--) {
+        return "Vreau sa ies la tabla!";
+    };
+};
+
+function stream (fn1, fn2) {
+    return 
+}
+stream(conditionalFn, actionFn)
 // 6. Implementati functia computeSumOfArrayElements. 
 // Trebuie sa:
 // ● accepte ca argument un array format din numere 
