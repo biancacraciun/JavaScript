@@ -161,26 +161,6 @@ const multipleCallbacks = (object, successCase, errorCase) => {
 multipleCallbacks ({ status: 'success' }, successCase, errorCase);
 multipleCallbacks ({ status: 'error' }, successCase, errorCase);
 
-// const object = {
-//   status: ["success", "error"],
-// };
-
-// const successCase = () => console.log("Success!!");
-// const errorCase = () => console.log("Error!!");
-
-// const multipleCallbacks = (object, fn1, fn2) => {
-//   if (object.status[0]) {
-//     return successCase();
-//   } else if (object.status[1]) {
-//     return errorCase();
-//   } else {
-//     return "Try again!"
-//   };
-// };
-
-// multipleCallbacks ({ status: 'success' }, successCase, errorCase); // Success!!
-// multipleCallbacks ({ status: 'error' }, successCase, errorCase); // Success!!
-
 // 5
 /*
 -- FAKE DATA FETCHER --
@@ -228,7 +208,7 @@ and should print on the browser's console only the employees that are developers
 Requirement: reuse the filtering function that you have already implemented
 */
 
-const simulateServerCall = (url, params) {
+const simulateServerCall = (url, params) => {
 	console.log(`Fetching data for ${params.userId} from: `, url);
 	setTimeout(() => {
     console.log('Server responded with success');
@@ -258,6 +238,16 @@ const simulateServerCall = (url, params) {
       ]
    };
    // now what ?
+    const developers = () => {
+      let dev = [];
+      for (i = 0; i <= fakeData.employees.length; i++) {
+        if (fakeData.employees[i].title === "Developer") {
+          dev.push(fakeData.employees[i].name);
+        };
+      };
+      return dev;
+    };
+
   });
 };
 
@@ -289,25 +279,26 @@ and then stops
 
 // nu se opreste
 const theFinalCountdown = (number) => {
-  setInterval(function () {
+  let countdown = setInterval(function () {
     console.log(number);
     number--;
     if(number === 0) {
-      clearInterval(theFinalCountdown);
+      clearInterval(countdown);
+      console.log(number);
     };
   }, 1000)
 };
 
 theFinalCountdown(10)
 
-let number = 10
-const theFinalCountdown = setInterval(function () {
-    console.log(number);
-    number--;
-    if(number === -1) {
-      clearInterval(theFinalCountdown);
-    };
-}, 1000);
+// let number = 10
+// const theFinalCountdown = setInterval(function () {
+//     console.log(number);
+//     number--;
+//     if(number === -1) {
+//       clearInterval(theFinalCountdown);
+//     };
+// }, 1000);
 
 
 
