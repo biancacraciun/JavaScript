@@ -1,0 +1,110 @@
+h1 {
+    font-family: 'Noto Serif', serif;
+    font-size: 25px;
+}
+
+label {
+    font-family: 'Baskervville', serif;
+    font-size: 15px;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+.form {
+    box-sizing: border-box;
+    border: 5px groove grey;
+    padding: 30px;
+    width: 500px;
+    height: auto;
+    display: inline-block;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 50px;
+    right: 50px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#usernameVal {
+   width: 100%;
+}
+
+#email {
+    @extend #usernameVal;
+}
+
+#fName {
+    @extend #usernameVal;
+}
+
+#lName {
+    @extend #usernameVal;
+}
+
+#nickname {
+    @extend #usernameVal;
+}
+
+#telNumber {
+    @extend #usernameVal;
+}
+
+#userName-Error {
+    font-weight: bold;
+    width: 100%;
+}
+
+#email-Error {
+    @extend #userName-Error;
+}
+
+#firstName-Error {
+    @extend #userName-Error;
+}
+
+#lastName-Error {
+    @extend #userName-Error;
+}
+
+#phone-Error {
+    @extend #userName-Error;
+}
+
+[type=submit] {
+    background-color: #505050;
+    width: 100%;
+    color: white;
+    border: 1px solid #505050;
+    padding: 10px;
+    transition: width 2s;
+    cursor: pointer;
+
+    &:hover {
+        -webkit-animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: shadow-drop-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+}
+
+@-webkit-keyframes shadow-drop-center {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+              box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    100% {
+      -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+              box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    }
+  }
+  @keyframes shadow-drop-center {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+              box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    }
+    100% {
+      -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+              box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    }
+}
