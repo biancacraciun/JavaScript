@@ -240,16 +240,19 @@ const simulateServerCall = (url, params) => {
    // now what ?
     const developers = () => {
       let dev = [];
-      for (i = 0; i <= fakeData.employees.length; i++) {
+      for (i = 0; i < fakeData.employees.length; i++) {
         if (fakeData.employees[i].title === "Developer") {
           dev.push(fakeData.employees[i].name);
         };
       };
       return dev;
     };
-
+    filter(fakeData.employees, developers)
   });
+  console.log(developers)
 };
+
+simulateServerCall()
 
 const fetchDataFor = userId => {
   simulateServerCall('https://server.com/employee', { userId: userId });
@@ -277,7 +280,6 @@ theFinalCountdown(10); call will display:
 and then stops
 */
 
-// nu se opreste
 const theFinalCountdown = (number) => {
   let countdown = setInterval(function () {
     console.log(number);
