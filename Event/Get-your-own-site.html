@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Get your own site - Homework</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Noto+Serif&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Baskervville&display=swap" rel="stylesheet">
+
+        <link href="GetYourOwnSite.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="form">
+            <h1>Get your own Site 42 Sites account in seconds</h1>
+
+            <form action="#" id="thisForm">
+
+                <label for="username">USERNAME:</label>
+                <div id="userName-Error"></div>
+                <input type="text" id="usernameVal">
+                <section id="charactersLimit"></section>
+                <br>
+
+                <label for="emailAddress">EMAIL ADDRESS:</label>
+                <br>
+                <div id="email-Error"></div>
+                <input type="email" id="email">
+                <section id="emailAddress"></section>
+                <br>
+
+                <label for="firstName">FIRST NAME:</label>
+                <br>
+                <div id="firstName-Error"></div>
+                <input type="text" id="fName">
+                <section id="firstName"></section>
+                <br>
+
+                <label for="lastName">LAST NAME:</label>
+                <br>
+                <div id="lastName-Error"></div>
+                <input type="text" id="lName">
+                <section id="lastName"></section>
+                <br>
+
+                <label for="nickname">NICKNAME:</label>
+                <br>
+                <input type="text" id="nickname">
+                <br>
+                <br>
+
+                <label for="phone">PHONE:</label>
+                <br>
+                <div id="phone-Error"></div>
+                <input type="number" id="telNumber">
+                <section id="phoneConditions"></section>
+                <br>
+                
+                <div>
+                    <input type="radio" name="site" value="site" checked>
+                    <label for="site">GIME A SITE!</label>
+                    <br>
+                </div>
+                <div>
+                    <input type="radio" name="username" value="username">
+                    <label for="username">JUST A USERNAME, PLEASE.</label>
+                    <br>
+                    <br>
+                </div>
+                
+                <button type="submit" id="next">NEXT</button>
+            </form>
+        </div>
+    </body>
+    <script type="text/JavaScript" src="GetYourOwnSite.js"></script>
+</html>

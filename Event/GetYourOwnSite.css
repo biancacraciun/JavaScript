@@ -1,0 +1,78 @@
+h1 {
+  font-family: 'Noto Serif', serif;
+  font-size: 25px;
+}
+
+label {
+  font-family: 'Baskervville', serif;
+  font-size: 15px;
+  font-weight: bold;
+  font-variant: small-caps;
+}
+
+.form {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 5px groove grey;
+  padding: 30px;
+  width: 500px;
+  height: auto;
+  display: inline-block;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 50px;
+  right: 50px;
+}
+
+h1 {
+  text-align: center;
+}
+
+#usernameVal, #email, #fName, #lName, #nickname, #telNumber {
+  width: 100%;
+}
+
+#userName-Error, #email-Error, #firstName-Error, #lastName-Error, #phone-Error {
+  font-weight: bold;
+  width: 100%;
+}
+
+[type=submit] {
+  background-color: #505050;
+  width: 100%;
+  color: white;
+  border: 1px solid #505050;
+  padding: 10px;
+  -webkit-transition: width 2s;
+  transition: width 2s;
+  cursor: pointer;
+}
+
+[type=submit]:hover {
+  -webkit-animation: shadow-drop-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: shadow-drop-center 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes shadow-drop-center {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+  }
+}
+
+@keyframes shadow-drop-center {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
+  }
+}
+/*# sourceMappingURL=GetYourOwnSite.css.map */
