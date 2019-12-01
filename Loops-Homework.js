@@ -17,9 +17,10 @@
 // 4. apelarea functiei.
 
 function iteration(nr) { // 1.
+
     if (typeof nr !== 'number') {
         return "Introduceti o valoare de tip numeric!"
-    } // 2.
+    }; // 2.
 
     for (i = 0; i <= 20; i++) { // 3.
         if (i % 2 === 0) {
@@ -27,8 +28,8 @@ function iteration(nr) { // 1.
         } else {
             console.log('Numarul ' + i + ' este impar.'); // b.
         }
-    }
-}
+    };
+};
 
 iteration(2) // 4.
 
@@ -47,9 +48,11 @@ iteration(2) // 4.
 // 5. apelarea functiei.
 
 function iteration(nr) { // 1.
+
     if (typeof nr !== 'number') { // 2.
         return 'Introduceti o valoare de tip numeric!'
     }
+
     var i = 0; // 3.
     while (i <= 20) { // 4.
         if (i % 2 === 0) {
@@ -58,14 +61,15 @@ function iteration(nr) { // 1.
             console.log('Numarul ' + i + ' este impar.'); // b.
         }
         i++; // c.
-    }
-}
+    };
+};
 
 iteration(2) // 5.
 
 // III.
 
-function iteration(nr) {
+function iteration (nr) {
+
     var i = 0;
     do {
         if (i % 2 === 0) {
@@ -76,7 +80,7 @@ function iteration(nr) {
         i++;
     }
     while (i <= 20);
-}
+};
 
 iteration(7)
 
@@ -96,7 +100,8 @@ iteration(7)
 // 4. for-ul va afisa rezultatul inmultirii dintre valoarea variabilei i cu cifra 9;
 // 5. apelarea functiei.
 
-function multiplied(nr) { // 1.
+function multiplied (nr) { // 1.
+
     if (typeof nr !== 'number') {
         return "Introduceti o valoare de tip numeric!"; // 2.
     };
@@ -104,7 +109,7 @@ function multiplied(nr) { // 1.
     for (i = 0; i <= 10; i++) { // 3.
         console.log(i * 9); // 4.
     }
-}
+};
 
 multiplied(7) // 5.
 
@@ -121,6 +126,7 @@ multiplied(7) // 5.
 // 6. apelarea functiei.
 
 function multiplied(nr) { // 1.
+
     if (typeof nr !== 'number') {
         return "Introduceti o valoare de tip numeric!"; // 2.
     }
@@ -129,14 +135,15 @@ function multiplied(nr) { // 1.
     while (i <= 9) {
         console.log(i * 9); // 4.
         i++; // 5.
-    }
-}
+    };
+};
 
 multiplied(4) // 6.
 
 // III.
 
 function multiplied(nr) {
+
     if (typeof nr !== 'number') {
         return 'Introduceti o valoare de tip numeric!';
     }
@@ -168,12 +175,13 @@ multiplied(7)
 // 5. apelarea functiei;
 
 function multiplication_table () { // 1.
+
     for (i = 0; i <= 10; i++) { // 2.
         for (n = 0; n <= 10; n++) { // 3.
             console.log(i + ' * ' + n + ' = ' + i *  n); // 4.
         }
     }
-}
+};
 
 multiplication_table () // 5.
 
@@ -204,6 +212,7 @@ multiplication_table () // 5.
 // pe care le preia variabila qualif in cadrul functiei note () )
 
 var note = function (nr) { // 1.
+
     var qualif; // 2.
     if (nr >= 1 && nr < 3) {
       qualif = 'E'; // 4.
@@ -223,7 +232,7 @@ var note = function (nr) { // 1.
   
 for (i = 1; i <= 10; i++) {
     console.log("Pentru nota " + i + " obtii calificativul " + note(i));
-}
+};
 
 // II.
 
@@ -241,6 +250,7 @@ for (i = 1; i <= 10; i++) {
 // pe care o accesez prin apelarea functiei note cu argumentul i, adica valorile de la 1 la 10.
 
 var note = function(nr) {
+
     var qualif;
     switch(true) {
       case nr >= 1 && nr < 3:
@@ -266,4 +276,4 @@ var note = function(nr) {
   
 for (i = 1; i <= 10; i++) {
     console.log("Pentru nota " + i + " obtii calificativul " + note(i));
-}
+};
