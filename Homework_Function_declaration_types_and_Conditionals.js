@@ -22,11 +22,10 @@
 // EX. 1
 
 function validate_Gender (SSN) {
+
   var SSN_string = SSN.toString();
-  // if (SSN_string.length !== 13) {
-  //   return 'Incorrect SSN!'; 
-  // }
   var regexp = /^[1-9]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(0[1-9]|[1-4]\d|5[0-2]|99)(00[1-9]|0[1-9]\d|[1-9]\d\d)\d$/;
+  
   if (!regexp.test(SSN)) {
     return 'Incorrect SSN!';
   } 
@@ -48,12 +47,14 @@ function validate_Gender (SSN) {
   }
 };
   
-console.log(validate_Gender(2970220225899));
+validate_Gender(2970220225899)
 
 function validate_Gender (SSN) {
+
   var gender;
   var SSN_string = SSN.toString();
   var regexp = /^[1-9]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])(0[1-9]|[1-4]\d|5[0-2]|99)(00[1-9]|0[1-9]\d|[1-9]\d\d)\d$/;
+
   if (!regexp.test(SSN)) {
     return 'Incorrect SSN!';
   } 
@@ -81,12 +82,12 @@ function validate_Gender (SSN) {
       return 'Persoana este rezidenta straina!'
       break;
   }
+
   return 'Persoana verificata este de sexul ' + gender;
 };
 
-console.log(validate_Gender(2970220225899));
+validate_Gender(2970220225899);
  
-
 // 1. se declara functia cu parametrul nr;
 // 2. se declara o variabila care stocheaza calificativele corespunzatoare punctajelor;
 // 3. pentru fiecare interval numeric, variabila corespunzatoare calificativul ia o alta valoare;
@@ -103,6 +104,7 @@ console.log(validate_Gender(2970220225899));
 // I.
 
 var note = function (nr) {
+
   var qualif; 
   if (nr >= 1 && nr < 3) {
     qualif = 'E';
@@ -117,14 +119,16 @@ var note = function (nr) {
   } else {
     return 'Nu exista calificativ!';
   }
-  return 'Calificativul corespunzator punctajului ' + nr + ' este ' + qualif + '.'
+
+  return 'Calificativul corespunzator punctajului ' + nr + ' este ' + qualif + '.';
 };
 
-console.log(note(5))
+note(5)
 
 // II.
 
 var note = function(nr) {
+
   var qualif;
   switch(true) {
     case nr >= 1 && nr < 3:
@@ -145,10 +149,12 @@ var note = function(nr) {
     default: 'undefined';
       break;
   }
-  return 'Calificativul corespunzator punctajului ' + nr + ' este ' + qualif + '.'
+
+  return 'Calificativul corespunzator punctajului ' + nr + ' este ' + qualif + '.';
 };
 
-console.log(note(5))
+note(5)
+
 
 // 1. se declara functia cu parametrul car_name;
 // 2. se declara o variabila care va stoca numele tarilor de fabricatie;
@@ -161,8 +167,8 @@ console.log(note(5))
 // EX. 3
 
 var car_product = function (car_name) {
-  var country_name;
 
+  var country_name;
   if (car_name === 'Mazda') {
       country_name = 'Japonia';
   } else if (car_name === 'Hyundai') {
@@ -182,10 +188,11 @@ var car_product = function (car_name) {
   } else {
       return 'Marca este necunoscuta.';
   }
-  return 'Marca ' + car_name +  ' este fabricata in ' + country_name + '.'
+
+  return 'Marca ' + car_name +  ' este fabricata in ' + country_name + '.';
 };
 
-console.log(car_product('Mazda'));
+car_product('Mazda');
 
 
 // 1. se declara functia cu parametrul car_name;
@@ -200,6 +207,7 @@ console.log(car_product('Mazda'));
 // asa ca am declarat o variabila unknown careia i-am atribuit valoarea "Marca nu exista!";
 
 var car = function (car_name) {
+
   var country_name;
   var unknown = 'Marca este necunoscuta!';
 
@@ -231,12 +239,13 @@ var car = function (car_name) {
     default:
       return unknown;
   } 
+
   return 'Marca ' + car_name + ' este fabricata in ' + country_name; 
 };
   
-console.log(car('Mitsubishi'));
-console.log(car('Opel'));
-console.log(car('Hyundai'));
+car('Mitsubishi');
+car('Opel');
+car('Hyundai');
 
 
 // 1. declararea functiei IIFE;
