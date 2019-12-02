@@ -150,8 +150,13 @@ distances([
 // ex 8. Returnati un array de obiecte care sa contina doar id si titlul fiecarui item de mai jos 
 
 const releases = arr => {
-    return arr.map(idTitle => `${idTitle.id}: ${idTitle.title}`)
-}
+    return arr.map(idTitle => {
+        return {
+            id: idTitle.id,
+            title: idTitle.title
+        }
+    })
+};
 
 releases ([
     {
