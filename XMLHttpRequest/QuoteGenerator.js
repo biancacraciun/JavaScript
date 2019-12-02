@@ -20,3 +20,6 @@ const gimmeQuote = () => {
 };
 
 gimmeQuote()
+
+const selectButton = document.getElementById('xhr');
+selectButton.addEventListener("click", gimmeQuote, true);
