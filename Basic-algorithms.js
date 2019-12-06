@@ -11,29 +11,40 @@ function protect_email(email) {
 protect_email('craciunbiancas@yahoo.com');
 
 // ES6
-const protect_email = (email = "string") => {
-  let search_for = email.search('@');
-  return email.slice(0, 4) + '...' + email.slice(search_for);
-};
-
+const protect_email = (email = "xyz@yahoo.com") => `${email.slice(0, 4)} ... ${email.slice(email.search('@'))}`
 protect_email('craciunbiancas@yahoo.com');
 
 // 2. Scrieti o functie care sa faca uppercase la fiecare litera de la fiecare inceput de string
 // de ex: myFunction("i am superman") sa printeze "I Am Superman"
 
 // ES5
-var array = [];
 function upperCase(text) {
-
+  var array = [];
   var arr = text.split(" ");
   for (i = 0; i < arr.length; i++) {
     var uppercase = arr[i].charAt(0).toUpperCase() + arr[i].slice(1).toLowerCase();
     array.push(uppercase);
   };
+
   return array.join(" ");
 };
 
 upperCase('i am superman');
+
+// ES6 
+const upperCase = (text = "string") => {
+
+  let array = [];
+  let arr = text.split(" ");
+  for (let i = 0; i < arr.length; i++) {
+    let uppercase = arr[i].charAt(0).toUpperCase() + arr[i].slice(1).toLowerCase();
+    array.push(uppercase);
+  };
+
+  return array.join(" ")
+};
+
+upperCase('i am superman')
 
 // 3.  Scrieti o functie care sa schimbe literele unui string daca sunt uppercase cu lowercase si invers
 // ex: myFunction("xxXyYzZZ") sa printeze "XXxYyZzz"
@@ -53,9 +64,9 @@ upperCase('i am superman');
 // 9. apelarea functiei.
 
 // ES5
-var array = []; // 1.
-function capitalize(text) { // 2.
 
+function capitalize(text) { // 2.
+  var array = []; // 1.
   if (typeof text !== "string") {
     return "Accept only string values";
   };
@@ -71,19 +82,25 @@ function capitalize(text) { // 2.
       array.push(upper); // 7.
     };
   };
+
   return array.join(""); // 8.
 }
 
 capitalize('XXxYyZzz') // 9.
 
 // ES6
-let array = [];
 const capitalize = (text = "string") => {
+
+  let array = [];
   let arr = text.split("");
   for (let i = 0; i < arr.length; i++) {
-    arr[i] === arr[i].toUpperCase() ? array.push(arr[i].toLowerCase()) : arr[i] === arr[i].toLowerCase() ?
-      array.push(arr[i].toUpperCase()) : "try again";
+    if (arr[i] === arr[i].toUpperCase()) {
+      array.push(arr[i].toLowerCase());
+    } else {
+      array.push(arr[i].toUpperCase())
+    }
   };
+
   return array.join("");
 };
 
@@ -99,12 +116,13 @@ capitalize('XXxYyZzz');
 // ES5
 
 function repeat(expression, nr) { // 1.
+
   if (typeof expression !== 'string') {
-    return 'Introduceti o valoare de tip text!'; 
+    return 'Introduceti o valoare de tip text!';
   };
 
   if (typeof nr !== 'number') {
-    return 'Introduceti o valoare de tip numeric!'; 
+    return 'Introduceti o valoare de tip numeric!';
   };
 
   return expression.repeat(nr); // 2.
@@ -113,7 +131,7 @@ function repeat(expression, nr) { // 1.
 repeat('Wantsome', 7); // 3.
 
 // ES6
-const repeat = (expression = "string", nr = "number") => expression.repeat(nr);
+const repeat = (expression = "string", nr) => expression.repeat(nr);
 repeat("Wantsome", 10);
 
 // 5. A palindrome is a word or a phrase that is the same whether you read it backward or forwards,
@@ -133,29 +151,42 @@ repeat("Wantsome", 10);
 
 // ES5
 
-function palindrome(expression) { // 1.
+function palindrome (expression) {
 
-  if (typeof expression !== 'string') {
-    return "Introduceti o valoare de tip text!"; // 2.
-  };
+  if(typeof expression !== "string") {
+    return "Introduceti o valoare de tip text!";
+  }
 
-  var expressionUppercase = expression.toUpperCase(); // 3.
-  var expressionArray = expressionUppercase.split(''); // 4.
-  var reverseExpression = expressionArray.reverse(); // 5.
-  var arrToStr = reverseExpression.join("") // 5.
-  if (arrToStr === expressionUppercase) {
-    return 'Cuvantul este palindrom!'; // 6.
+  var exprLowercase = expression.toLowerCase();
+  var exprArr = exprLowercase.split("");
+  var reverseExpr = exprArr.reverse();
+  var anotherWord = reverseExpr.join("");
+
+  if (exprLowercase === anotherWord) {
+    return "Cuvantul este palindrom!"
   } else {
-    return 'Cuvantul nu este palindrom!'; // 7.
-  };
-};
+    return "Cuvantul nu este palindrom!"
+  }
+}
 
-palindrome('text'); // 8.
+palindrome('text')
+palindrome('Eye') 
+palindrome('eye')
 
 // ES6
-const palindrome = (expression = "string") => expression.toUpperCase().split("").reverse().join("") === expression.toUpperCase() ?
-"Cuvantul este palindrom!" : "Cuvantul nu este palindrom!"; 
+const palindrome = (expression = "string") => {
+
+  let palindr = expression.toLowerCase().split("").reverse().join("");
+  if (palindr === expression.toUpperCase()) {
+    return "Cuvantul este palindrom!";
+  } else {
+    return "Cuvantul nu este palindrom!"
+  }
+};
+
 palindrome('eye');
+palindrome('Eye')
+palindrome('text')
 
 // 6. Implementati o functie care accepta ca argument un array compus din mai multe array-uri de valori
 // numerice si returneaza un array care contine ca si elemente cele mai mari numere din fiecare array
@@ -170,27 +201,24 @@ palindrome('eye');
 // 6. functia returneaza un nou array care contine primele numere (cele mai mari) din fiecare array;
 // 7. apelarea functiei;
 
-// Nu mi-a iesit!!
+let largest_array = [
+  [1, 2, 5],
+  [5, 8, 10],
+  [18, 5, 10]
+]
 
-var final_array = [];
-function array_largest_numbers(arrs) {
-  for (var i = 0; i <= arrs.length; i++) {
-    for (var j = 0; j < arrs[i].length; j++) {
-      arrs[i][j].sort(function (a, b) {return a - b}).reverse();
-    };
-  };
-  return final_array.push(arrs[i][j][0]);
-};
-array_largest_numbers([[1, 2], [5, 7, 9], [18, 20, 3]])
+const array_largest_nrs = arr => {
 
-let largest_nr_arr = [];
-const array_largest_nrs = arrs => {
-  for (let i = 0; i <= arrs.length; i++) {
-    let result = arrs[i].sort((a, b) => a-b).reverse();
-    // console.log(result)
-  };
-  return largest_nr_arr.push(result[0])
+  let result = [];
+  for (let i = 0; i < arr.length; i++) {
+    let index = arr[i];
+    let sort = index.sort((a, b) => a - b).reverse()
+    result.push(sort[0])
+  }
+  return result;
 };
+
+array_largest_nrs(largest_array)
 
 // 7. Implementati o functie care face reverse la un string
 
@@ -206,6 +234,7 @@ const array_largest_nrs = arrs => {
 
 // ES5
 function reverse_string(str) { // 1.
+
   if (typeof str !== 'string') {
     return 'Functia accepta doar valori de tip string!'; // 2.
   } else {
@@ -234,6 +263,7 @@ reverse_string("work hard");
 
 // ES5
 function factorial_of_a_number(nr) { // 1.
+
   if (typeof nr !== 'number') {
     return "Functia accepta doar numere!"; // 2.
   };
@@ -251,6 +281,7 @@ function factorial_of_a_number(nr) { // 1.
 factorial_of_a_number(7); // 6.
 
 function factorialize(nr) {
+
   if (typeof nr !== 'number') {
     return "Functia accepta doar numere!";
   };
@@ -262,13 +293,15 @@ function factorialize(nr) {
   for (i = nr - 1; i > 1; i--) {
     nr *= i;
   };
+
   return nr;
 };
 
 factorialize(5);
 
 //ES6 
-const factorialize = (nr = "number") => {
+const factorialize = nr => {
+
   nr === 0 && nr === 1 ? 1 : "try again";
   for (let i = nr - 1; i > 1; i--) {
     nr *= i;
@@ -295,7 +328,7 @@ factorialize(7);
 //ES5
 function accept_strings(str, string) { // 1.
 
-  if (typeof str && string !== 'string' ) {
+  if (typeof str !== 'string' && typeof string !== 'string') {
     return "Functia accepta doar valori de tip string!"; // 2.
   };
 
@@ -309,7 +342,7 @@ function accept_strings(str, string) { // 1.
 accept_strings('home', 'x') // 5.
 
 //ES6
-const accept_strings = (str, string = "string") => str.endsWith(string) ? true : false;
+const accept_strings = (str = "string", string = "string") => str.endsWith(string) ? true : false;
 accept_strings("home", "x");
 
 // II.
@@ -325,6 +358,7 @@ accept_strings("home", "x");
 // 5. apelarea functiei;
 
 function accept_strings(str, string) { // 1.
+
   if (typeof str && string !== 'string') {
     return "Functia accepta doar valori de tip string!"; // 2.
   };
@@ -354,7 +388,7 @@ accept_strings('home', 'me') // 5.
 // };
 
 // function truth_function (arr, fn) {
-  
+
 //   for (i = 0; i <= arr.length; i++) {
 //     if (test(arr[i])) {
 //       return(arr[i]);
@@ -368,18 +402,21 @@ accept_strings('home', 'me') // 5.
 // truth_function([25, 10], test) // 25
 // truth_function([7, 25, 100, 5], test) // "Nu exista nici un numar patrat perfect!"
 
-function test(n) {
-  return Math.sqrt(n) % 1 === 0;
+function test(nr) {
+  if (Math.sqrt(nr) % 2 === 0) {
+    return "Numarul ESTE patrat perfect";
+  } else {
+    return "Numarul NU ESTE patrat perfect";
+  }
 };
 
-function select_nr (arr, fn) {
-  for (var i = 0; i <= arr.length; i++) {
+function select_nr(arr, fn) {
+
+  for (var i = 0; i < arr.length; i++) {
     if (fn(arr[i])) {
       return arr[i];
-    } else {
-      return "Try again!";
-    };
-  };
+    }
+  }
 };
 
 select_nr([25, 10], test)
@@ -396,19 +433,38 @@ select_nr([7, 25, 100, 5], test)
 // 5. apelarea functiei;
 
 //ES5
-function check_strings(str, string) { // 1.
+function check_strings(str1, str2) { 
 
-  var stringArr =  string.split(""); // 2.
-  for(var i = 0; i <= stringArr.length; i++) {
-    if (str.includes(stringArr[i])) { // 3.
+  var str2Array = str2.split(""); 
+  for (var i = 0; i < str2Array.length; i++) {
+    if (str1.includes(str2Array[i])) { 
       return true;
     } else {
-      return false; // 4.
+      return false; 
     };
   };
 };
 
-check_strings("mineral", "chh") // 5.
+check_strings("mineral", "chh") 
+check_strings("mineral", "axy")
+
+// ES6
+const check_strings = (str1, str2) => {
+
+  let str2Arr = str2.split("");
+  let length = str2Arr.length;
+
+  for(let i = 0; i < length; i++) {
+    if(!(str1.includes(str2Arr[i]))) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+}
+
+check_strings("mineral", "chh") 
+check_strings("mineral", "axy")
 
 // 12. // Implementati o functie care accepta ca argumente doi parametri:
 // un array si o valoare. Functia afiseaza fiecare element al array-ului pana 
@@ -420,17 +476,16 @@ check_strings("mineral", "chh") // 5.
 // 3. daca elementul specificat se regaseste in array, functia se va opri si va returna array-ul pana la valoarea specificata;
 // 4. apelarea functiei;
 
-// Functia imi returneaza cu totul alte valori si nu inteleg de ce!
-
-var final_arr = [];
+// ES5
 function return_value(array, val) { // 1.
-
+  
+  var final_arr = [];
   if (!Array.isArray(array)) {
     return "Introduceti un array!";
   };
 
-  for (i = 0; i <= array.length; i++) { // 2.
-    final_arr.push(arr[i]);
+  for (i = 0; i < array.length; i++) { // 2.
+    final_arr.push(array[i]);
     if (array[i] === val) { // 3
       return final_arr;
     };
@@ -439,7 +494,24 @@ function return_value(array, val) { // 1.
 
 return_value([1, 8, 9, 15, 49, 81], 15) // 4.
 
+// ES6
+const return_value = (array, val) => {
 
+  let final_arr = [];
+  if (!Array.isArray(array)) {
+    return "Introduceti un array!";
+  };
+
+  for(let i = 0; i < array.length; i++) {
+    final_arr.push(array[i]);
+
+    if(array[i] === val) {
+      return final_arr;
+    }
+  }
+};
+
+return_value([1, 8, 9, 15, 49, 81], 15)
 
 // 13. Scrieti o functie care elimina toate valorile false dintr-un array: false, null, 0, "", undefined, NaN
 
@@ -450,7 +522,7 @@ return_value([1, 8, 9, 15, 49, 81], 15) // 4.
 // 3. functia returneaza acel nou array cu valorile adevarate;
 // 4. apelarea functiei;
 
-//ES5
+// ES5
 function remove_false_value(array) { // 1.
 
   var final_array = [];
@@ -458,15 +530,34 @@ function remove_false_value(array) { // 1.
     return "Introduceti un array!"
   };
 
-  for (i = 0; i <= array.length; i++) { // 2.
-    if (array[i]) { 
-      final_array.push(array[i]);
+  for (i = 0; i < array.length; i++) { // 2.
+    if (array[i]) {
+      final_array.push(array[i])
     };
   };
+
   return final_array; // 3.
 };
 
 remove_false_value([null, undefined, "", 5, 7, 0, undefined, "string", NaN]) // 4.
+
+// ES6
+const remove_false_value = array => {
+  let final_array = [];
+  if(!Array.isArray(array)) {
+    return "Introduceti un array!"
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    if(array[i]) {
+      final_array.push(array[i])
+    }
+  }
+
+  return finaly_array;
+}
+
+remove_false_value([null, undefined, "", 5, 7, 0, undefined, "string", NaN]);
 
 // 14. Scrieti o functie care repeta un string de n ori specificate
 
