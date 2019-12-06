@@ -4,6 +4,7 @@
 
 // ES5
 function operation(nr1, nr2) {
+
     if (nr1 !== nr2) {
         return nr1 + nr2;
     } else if (nr1 === nr2) {
@@ -65,20 +66,32 @@ checkString(null);
 //removeDuplicates('aabcdeef') - 'abcdef'
 //removeDuplicates(122334) - 1234
 
-// Nu am reusit sa-l fac
+// ES6
+const removeDuplicates = value => { 
+    
+    let arr = [];
+    for(let i = 0; i < value.length; i++) {
+        if (arr.indexOf(value.charAt(i)) === -1){
+            arr.push(value.charAt(i))
+        }
+    }
+    return arr.join("")
+}
+removeDuplicates('hhhsbhshj') 
 
-function removeDuplicates(string) {
+// ES5
+function removeDuplicates (value) {
 
-    let newString = "";
-    for (i = 0; i <= string.length; i++) {
-        if (string.indexOf(string.charAt(i)) === string.lastIndexOf(string.charAt(i))) {
-            newString += string.charAt(i);
+    var arr = [];
+    for (i = 0; i < value.length; i++) {
+        if (arr.indexOf(value.charAt(i)) === -1) {
+            arr.push(value.charAt(i))
         };
     };
-    return newString;
+    return arr.join("");
 };
 
-removeDuplicates('hhhsbhshj') // 'bj'
+removeDuplicates('hhhsbhshj') 
 
 // 5. Gasiti cel mai lung string intr-o fraza
 //findLongestString('Wantsome is Awsomeeee today') - output 'Awsomeeee'
@@ -166,7 +179,7 @@ function operators(nr1, nr2, operator) {
         return "Scrieti denumirea operatiei!";
     };
 
-    let calculation;
+    var calculation;
     switch (operator) {
         case 'add':
             calculation = nr1 + nr2;
@@ -184,6 +197,30 @@ function operators(nr1, nr2, operator) {
 
     return calculation;
 }
+
+operators(7, 5, "add");
+
+// ES5
+const operators = (nr1, nr2, operator) => {
+
+    let calculation;
+    switch (operator) {
+        case 'add':
+            calculation = nr1 + nr2;
+            break;
+        case 'substract':
+            calculation = nr1 - nr2;
+            break;
+        case 'multiply':
+            calculation = nr1 * nr2;
+            break;
+        case 'divide':
+            calculation = nr1 / nr2;
+            break;
+    }
+
+    return calculation
+};
 
 operators(7, 5, "add");
 
@@ -213,8 +250,17 @@ function isDiv(nr) {
 isDiv(15);
 
 //ES6
-const isDiv = (nr = "number") => (nr % 3 === 0 && nr % 5 === 0) ? "BOTH" : nr % 5 === 0 ? "FIVE" : nr % 3 === 0 ? "THREE"
-    : nr;
+const isDiv = nr =>  {
+    if (nr % 3 === 0 && nr % 5 === 0) {
+        return "BOTH";
+    } else if (nr % 5 === 0) {
+        return "FIVE";
+    } else if (nr % 3 === 0) {
+        return "THREE";
+    } else {
+        return nr;
+    }
+};
 
 isDiv(15);
 
@@ -222,30 +268,36 @@ isDiv(15);
 // Azi este : Luni. 
 // Ora este : 20 PM : 30 : 38
 
-// ES5 
-function dayAndHour() {
+// ES6 
+const dayAndHour = () => {
 
-    let days = ['Duminica', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri', 'Sambata'];
+    const days = ['Duminica', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri', 'Sambata'];
     let weekDays = new Date();
+
     let getHours = weekDays.getHours();
-    
-    let meridian = "";
-    let time = "";
+    let getMinutes = weekDays.getMinutes() < 10 ? `0${weekDays.getMinutes()}` : weekDays.getMinutes();
+    let getSeconds = weekDays.getSeconds();
 
-    if (getHours >= 12) {
-        meridian = 'PM'; 
-    } else {
-        meridian = 'AM';
-    };
-
-    let getMinutes = weekDays.getMinutes();
-    if (getMinutes < 10) {
-        time = "0" + getMinutes;
-    };
-    return "Azi este: " + days[weekDays.getDay()] + "." + "Ora este: " + getHours + meridian + " : " + getMinutes + time + " : " + weekDays.getSeconds();
+    return `Azi este ${days[weekDays.getDay()]}. Este ora ${getHours}: ${getMinutes}: ${getSeconds}`;
 };
 
 dayAndHour()
+
+const dayAndHours = () => {
+
+    const days = ['Duminica', 'Luni', 'Marti', 'Miercuri', 'Joi', 'Vineri', 'Sambata'];
+    const weekDays = new Date();
+    
+    let getDays = weekDays.getDay();
+    let getHours = weekDays.getHours() > 12 ? weekDays.getHours() - 12 : weekDays.getHours();
+    let meridian = weekDays.getHours >= 12 ? "PM" : "AM";
+    let getMinutes = weekDays.getMinutes() < 10 ? `0${weekDays.getMinutes()}` : weekDays.getMinutes();
+    let getSeconds = weekDays.getSeconds() < 10 ? `0${weekDays.getSeconds()}` : weekDays.getSeconds();
+
+    return `Este ${days[getDays]}, ora ${getHours}${meridian}:${getMinutes}:${getSeconds}`
+};
+
+dayAndHours()
 
 // 11. ATM-urile iti dau voie sa folosesti pin-uri din 4 sau 6 cifre.
 // Faceti o functie care sa returneze true daca pin-ul e corect si false daca e gresit
@@ -275,7 +327,7 @@ validPin('12345');
 validPin('z23f');
 
 // ES6
-const validPin = (number = "string") => /^(\d{4}|\d{6})$/.test(number) ? true : false;
+const validPin = number => /^(\d{4}|\d{6})$/.test(number) ? true : false;
 validPin ("1234");
 
 // 12. Folosind regex vreau sa scot toate vocalele dintr-un string
@@ -324,7 +376,7 @@ isSquareNumber(25);
 isSquareNumber(3);
 
 // ES6
-const isSquareNumber = (nr = "number") => Math.sqrt(nr) % 1 === 0 ? true : false;
+const isSquareNumber = (nr) => Math.sqrt(nr) % 1 === 0 ? true : false;
 isSquareNumber(25);
 isSquareNumber(3);
 
@@ -335,6 +387,7 @@ isSquareNumber(3);
 
 // ES5
 function isAnagram (str, string) {
+
     if (typeof str !== 'string' && typeof string !== 'string') {
         return "Introduceti doua cuvinte!";
     };
@@ -352,6 +405,6 @@ function isAnagram (str, string) {
 isAnagram("silent", "listen");
 
 // ES6 
-const isAnagram = (str, string = "string") => str.toUpperCase().split("").sort().join("") === string.toUpperCase().split("").sort().join("") ? true
+const isAnagram = (str = "string", string = "string") => str.toUpperCase().split("").sort().join("") === string.toUpperCase().split("").sort().join("") ? true
 : false;
 isAnagram("silent", "listen");
