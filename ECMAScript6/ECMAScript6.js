@@ -22,9 +22,9 @@ const longestString = (str = "string") => {
     let array = str.split(" ").sort((a, b) => a.length - b.length);
     let reversedArray = array.reverse();
     return reversedArray[0];
-}
+};
 
-longestString("Hoist and Closure.")
+longestString("Hoist and Closure.");
 
 // 3. Implementati o functie care accepta ca parametru un string si ii face 'reverse' 
 
@@ -34,35 +34,16 @@ function reversedString (str) {
         return "Introduceti o valoare de tip string!";
     };
 
-    return str.split("").reverse().join("")
+    return str.split("").reverse().join("");
 }
 
-reversedString("Bianca")
+reversedString("Bianca");
 
 // ES6
 const reversedString = (str = "string") => str.split("").reverse().join("");
 
 // 4. Implementati o functie care accepta ca parametru un string si inlocuieste
 // fiecare litera din acesta cu urmatoarea litera din alfabet
-
-// ES5
-// function alphabet (str) {
-//     if (typeof str !== "string") {
-//         return "Introduceti o valoare de tip string!";
-//     };
-
-//     var nextChar = "";
-//     for (var i = 0; i <= str.length; i++) {
-//       nextChar += str.charAt(i+1);  
-//     };
-//     return nextChar;
-// };
-
-
-// ES5
-// Initial am folosit replace(), dar mi-a inlocuit doar primele doua litere
-// de asemenea, folosisem str.charCodeAt() fara String.fromCharCode si-mi returna nr, nu urmatoarea litera,
-// am search-uit putin si am ajuns la rezultatul asta
 
 function replaceWithNext (str) {
     if (typeof str !== "string") {
@@ -77,6 +58,7 @@ function replaceWithNext (str) {
             newWord += String.fromCharCode(str.charCodeAt(i) + 1);
         };
     };
+
     return newWord;
 };
 
@@ -92,6 +74,7 @@ const replaceWith = (str = "string") => {
             newWord += String.fromCharCode(str.charCodeAt(i) + i);
         };
     };
+
     return newWord;
 };
 
@@ -118,7 +101,7 @@ function convertToTime (number) {
 convertToTime (400);
 
 // ES6 
-const convertToTime = (number = "number") => {
+const convertToTime = number => {
     let division = number / 60; 
     let hours = Math.trunc(division);
     var minutes = number - hours * 60;
@@ -170,12 +153,12 @@ alphabeticalOrder ("Bianca")
 //ES5
 function beforeAfter (word) {
     if (typeof word !== "string") {
-        return "This function accepts only words string!"
+        return "This function accepts only words!"
     };
     
     var beforeAfterArray = word.split("");
     var symbol = "+";
-    for (var i = 1; i < word.length; i++) {
+    for (var i = 1; i <= word.length; i++) {
         if ((beforeAfterArray[i - 1]) === symbol && (beforeAfterArray[i + 1]) === symbol) {
             return true;
         } else {
@@ -191,10 +174,31 @@ beforeAfter ("+ab+a+a+b");
 const beforeAfter = (word = "string") => {
     
     let symbol = "+";
-    for (let i = 1; i <= word.length; i++) {
+    for (let i = 1; i <= word.length; i+=2) {
         return ((word.split("")[i - 1]) === symbol && (word.split("")[i + 1]) === symbol ? true : false);
     };
 };
 
 beforeAfter ("+a+a+a+a");
 beforeAfter ("+ab+a+a+b");
+
+const beforeAfter = (word = "string") => {
+
+    let symbol = "+";
+    let arr = word.split("");
+    
+    if(arr[0] !== symbol || arr[arr.length - 1] !== symbol) {
+        return false;
+    }
+    console.log(arr[arr.length - 1])
+    for(let i = 1; i < arr.length; i += 2) {
+        if(arr[i] === symbol) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+};
+
+beforeAfter ("+aaa+")
+beforeAfter("+a+aa")
