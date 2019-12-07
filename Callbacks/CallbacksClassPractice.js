@@ -65,7 +65,8 @@ function customMap(array, mycallback) {
 	var arr = [];
 	for(var index in array){
 		arr.push(mycallback(array[index]));
-	}
+  }
+  
 	return arr;
 }
 
@@ -87,6 +88,17 @@ console.log(myMap(randomArray, square));  // Implement the function named square
 
 // Now translate the upper function to ES6 syntax
 
+// ES6
+const customMap = (array, mycallback) => {
+  let arr = []; 
+  for (let index in array) {
+    arr.push(mycallback(array[index]));
+  }
+
+  return arr;
+};
+
+const randomArray = [[1, 2, 3, 4, 5, 6, 7, 8, 9];
 /*`
 // 3. This function will go over every element in an array one by one, calling the
 // callback with each item, adding the element to a new array only if
@@ -112,11 +124,12 @@ var filter = function(arr, conditionalFn) {
 
   var filteredArray = [];
   for (var i = 0; i < arr.length; i++) {
-    var value= arr[i];
+    var value = arr[i];
     if (conditionalFn(value)) {
       filteredArray.push(value);
     };
   };
+
   return filteredArray;
 };
 
@@ -208,6 +221,19 @@ and should print on the browser's console only the employees that are developers
 Requirement: reuse the filtering function that you have already implemented
 */
 
+var filter = function(arr, conditionalFn) {
+
+  var filteredArray = [];
+  for (var i = 0; i < arr.length; i++) {
+    var value = arr[i];
+    if (conditionalFn(value)) {
+      filteredArray.push(value);
+    };
+  };
+
+  return filteredArray;
+};
+
 const simulateServerCall = (url, params) => {
 	console.log(`Fetching data for ${params.userId} from: `, url);
 	setTimeout(() => {
@@ -240,20 +266,27 @@ const simulateServerCall = (url, params) => {
    // now what ?
     const developers = () => {
       let dev = [];
-      for (i = 0; i <= fakeData.employees.length; i++) {
+      for (i = 0; i < fakeData.employees.length; i++) {
+        // console.log(fakeData.employees[i])
+        // console.log(fakeData.employees[i].title)
         if (fakeData.employees[i].title === "Developer") {
           dev.push(fakeData.employees[i].name);
-        };
-      };
+        }
+      }
+
       return dev;
     };
-
+    
+    developers(fakeData.employees)
+    // filter(fakeData.employees, developers)
   });
 };
 
 const fetchDataFor = userId => {
   simulateServerCall('https://server.com/employee', { userId: userId });
 };
+
+fetchDataFor()
 
 // 6.
 /*
@@ -279,6 +312,7 @@ and then stops
 
 // nu se opreste
 const theFinalCountdown = (number) => {
+  
   let countdown = setInterval(function () {
     console.log(number);
     number--;
