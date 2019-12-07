@@ -1,5 +1,5 @@
 const puppiesData = () => {
-    const URL = "https://www.reddit.com/r/aww/search.json?q=puppy&restrict_sr=true";
+    const URL = "https://www.reddit.com/r/aww/search.json?q=cat&restrict_sr=trues";
     const puppiesRequest = new XMLHttpRequest();
 
     puppiesRequest.onreadystatechange = function() {
@@ -15,22 +15,26 @@ const puppiesData = () => {
 
                 document.getElementsByTagName('button')[0].onclick = clearText();
 
-                for(i = 0; i <= puppiesData.data.children.length; i++) {
+                for(i = 0; i < puppiesData.data.children.length; i++) {
                     const createImg = document.createElement('img');
                     createImg.src = puppiesData.data.children[i].data.thumbnail; // Puppies.js:27 Uncaught TypeError: Cannot read
                     // property 'data' of undefined at HTMLButtonElement.addImg (Puppies.js:27), dar totusi imi afiseaza
                     imgPlace.appendChild(createImg);
                 };
             };
-
-            const button = document.getElementsByClassName('btn')[0];
-            button.addEventListener("click", addImg, true);
-            console.log(puppiesData)
+            
+            addImg()
+            // const button = document.getElementsByClassName('btn')[0];
+            // button.addEventListener('click', addImg, true)
+            // console.log(puppiesData)
         };
     };
-
+    
     puppiesRequest.open("GET", URL, true);
     puppiesRequest.send();
 };
 
-puppiesData()
+
+
+const button = document.getElementsByClassName('btn')[0];
+button.addEventListener("click", puppiesData, true);
