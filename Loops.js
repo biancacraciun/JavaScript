@@ -29,6 +29,14 @@ function number(x) {
 
 number(10);
 
+const number = x => {
+    let i = 0;
+    while (i < x) {
+        console.log(`Sunt la iteratia numarul ${i}.`);
+        i++;
+    }
+}
+
 // 2. Scrieti o functie care accepta ca argument un array si afiseaza in consola elementele 
 // acestuia prin parcurgerea sa -
 // Scrieti codul in doua variante
@@ -38,6 +46,7 @@ function array(x) {
     if (!Array.isArray(x)) {
         return false;
     }
+    
     for (i = 0; i < x.length; i++) {
         console.log(x[i]);
     }
@@ -203,6 +212,8 @@ rep (4) // 0 1 2 3 40 1 2 3 40 1 2 3 4
 // ● accepte ca argumente 2 functii: conditionalFn, actionFn. 
 // ● apeleaza actionFn pana cand conditionalFn returneaza fals 
 // ● nu returneaza nimic
+
+// I NEED HELP!
 
 function conditionalFn () {
     return false;
