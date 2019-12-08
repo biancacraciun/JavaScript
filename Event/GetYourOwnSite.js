@@ -55,63 +55,67 @@ const phoneNrInfo = () => {
 
 phoneNr.onclick = phoneNrInfo;
 
+const verifyErrors = (selectedElement, text) => {
+
+    event.preventDefault();
+    const selectedDiv = document.getElementById(selectedElement);
+    selectedDiv.style.border = "1px solid red";
+    selectedDiv.style.backgroundColor = "#ffece6";
+    selectedDiv.style.padding = "5px";
+    selectedDiv.style.margin = "10px 0px";
+
+    return selectedDiv.innerText = text;
+}
+
+const getFocus = nextInput => { 
+    const selectNextInput = document.getElementById(nextInput);
+    return selectNextInput.focus()
+}
+
 const validate = event => {
     const usernameVal = username.value; // username Input value 
-    const usernameValidation = new RegExp (/^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$/);
+    const usernameValidation = new RegExp (/^[a-zA-Z0-9_]{4}$/g);
     if(usernameVal === "" || usernameVal.length !== 4 && !(usernameVal.match(usernameValidation))) {
-        event.preventDefault();
-        const userNameError = document.getElementById('userName-Error');
-        userNameError.style.border = "1px solid red";
-        userNameError.style.backgroundColor = "#ffece6";
-        userNameError.style.padding = "5px";
-        userNameError.style.margin = "10px 0px";
-        return userNameError.innerText = "Please enter a username!";
+        verifyErrors('userName-Error', 'Please enter a valid UserName!')
+    }
+
+    if(usernameVal.length === 4 && usernameVal.match(usernameValidation)) {
+        getFocus('email')
     }
 
     const emailVal = email.value;
     const emailValidation = new RegExp (/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
     if(emailVal === "" || !(emailVal.match(emailValidation))) {
-        event.preventDefault();
-        const emailError = document.getElementById('email-Error');
-        emailError.style.border = "1px solid red";
-        emailError.style.backgroundColor = "#ffece6";
-        emailError.style.padding = "5px";
-        emailError.style.margin = "10px 0px";
-        return emailError.innerText = "Please enter a valid email address!";
+        verifyErrors('email-Error', 'Please enter a valid email address!')
+       
+    }
+
+    if(emailVal.match(emailValidation)) {
+        getFocus('fName')
     }
 
     const firstNameVal = fName.value;
     if(firstNameVal === "") {
-        event.preventDefault();
-        const firstNameError = document.getElementById('firstName-Error');
-        firstNameError.style.border = "1px solid red";
-        firstNameError.style.backgroundColor = "#ffece6";
-        firstNameError.style.padding = "5px";
-        firstNameError.style.margin = "10px 0px";
-        return firstNameError.innerText = "Please enter a First Name!"
+        verifyErrors('firstName-Error', 'Please enter a First Name!')
+    }
+
+    if(firstNameVal !== "") {
+        getFocus('lName')
     }
 
     const lastNameVal = lName.value;
     if(lastNameVal === "") {
-        event.preventDefault();
-        const lastNameError = document.getElementById('lastName-Error');
-        lastNameError.style.border = "1px solid red";
-        lastNameError.style.backgroundColor = "#ffece6";
-        lastNameError.style.padding = "5px";
-        lastNameError.style.margin = "10px 0px";
-        return lastNameError.innerText = "Please enter a Last Name!"
+        verifyErrors('lastName-Error', 'Please enter a Last Name!')
+    }
+
+    if(lastNameVal !== "") {
+        getFocus('telNumber')
     }
 
     const phoneNrVal = phoneNr.value;
     const phoneValidation = new RegExp (/\(?\+[0-9]{1,3}\)? ?-?[0-9]{1,3} ?-?[0-9]{3,5} ?-?[0-9]{4}( ?-?[0-9]{3})? ?(\w{1,10}\s?\d{1,6})?/);
     if(phoneNrVal === "" || !(phoneValidation.test(phoneNrVal))) {
-        event.preventDefault();
-        const phoneError = document.getElementById('phone-Error');
-        phoneError.style.border = "1px solid red";
-        phoneError.style.backgroundColor = "#ffece6";
-        phoneError.style.padding = "5px";
-        phoneError.style.margin = "10px 0px";
-        return phoneError.innerText = "Please enter a Phone!";
+        verifyErrors('phone-Error', 'Please enter a valid Phone Number!')
     }
 }
 
