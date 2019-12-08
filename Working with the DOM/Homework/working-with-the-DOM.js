@@ -24,7 +24,6 @@ const style = document.createElement('style');
 style.innerText = '.listitem { color: red; }';
 const insertNode = document.getElementsByTagName('head')[0].appendChild(style);
 
-
 const img = document.createElement('img');
-const attr = img.src="coffeeAddicted.jpg";
+const attr = img.src = "coffeeAddicted.jpg";
 const append = document.getElementsByTagName('body')[0].appendChild(img);
