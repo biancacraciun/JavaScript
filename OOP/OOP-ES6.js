@@ -46,8 +46,6 @@ class Animal {
     weakingUp() {
         console.log(`${this.name} is weaking up`)
     }
-
-
 };
 
 class Dog extends Animal {
