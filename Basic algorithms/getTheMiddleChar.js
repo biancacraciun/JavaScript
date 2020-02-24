@@ -14,3 +14,6 @@ function getMiddle(s) {
 
     return arr.join("");
 }
+
+getMiddle("test"); // "es"
+getMiddle("study"); // "u"
